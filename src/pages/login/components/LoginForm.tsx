@@ -72,7 +72,14 @@ const LoginForm = ({ disabled = false }: Props) => {
             { type: 'email', message: 'Invalid email' },
           ]}
         >
-          <AppInput prefix={'Email'} className="email" placeholder="Email" />
+          <AppInput
+            prefix={'Email'}
+            className="email"
+            id="email"
+            name="email"
+            autoComplete="username"
+            placeholder="Email"
+          />
         </AppFormItem>
         <AppFormItem
           name="password"
@@ -84,6 +91,9 @@ const LoginForm = ({ disabled = false }: Props) => {
           <AppInput
             prefix={'Icon'}
             className="email"
+            id="password"
+            name="password"
+            autoComplete="current-password"
             placeholder="Password"
             type={passwordVisible ? 'password' : 'text'}
             suffix={

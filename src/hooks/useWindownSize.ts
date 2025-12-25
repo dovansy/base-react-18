@@ -1,29 +1,39 @@
 import { useState, useEffect } from 'react';
 
-export default function useWindowSize(): {
+interface WindowSize {
   width: number;
   isTablet: boolean;
   isPhone: boolean;
   isPC: boolean;
-} {
-  const [width, setWidth] = useState(window.innerWidth);
-  const [device, setDevice] = useState('PC');
-  const isTablet: boolean = device === 'Tablet';
-  const isPhone: boolean = device === 'phone';
-  const isPC: boolean = device === 'PC';
+}
+
+export default function useWindowSize(): WindowSize {
+  const isClient = typeof window !== 'undefined';
+
+  const getWidth = () => (isClient ? window.innerWidth : 1024); // default width for SSR
+  const [width, setWidth] = useState<number>(getWidth);
+
+  // Compute device type directly from width
+  const isPhone = width < 768;
+  const isTablet = width >= 768 && width <= 1024;
+  const isPC = width > 1024;
 
   useEffect(() => {
-    if (width < 768) setDevice('Phone');
-    else if (width >= 768 && width <= 1024) setDevice('Tablet');
-    else setDevice('PC');
-  }, [width]);
+    if (!isClient) return;
 
-  useEffect(() => {
-    const handleResize = () => setWidth(window.innerWidth);
+    let animationFrame: number;
+
+    const handleResize = () => {
+      cancelAnimationFrame(animationFrame);
+      animationFrame = requestAnimationFrame(() => setWidth(window.innerWidth));
+    };
 
     window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize); // Cleanup
-  }, []);
+    return () => {
+      cancelAnimationFrame(animationFrame);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [isClient]);
 
   return { width, isTablet, isPhone, isPC };
 }
