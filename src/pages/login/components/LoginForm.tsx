@@ -37,7 +37,7 @@ const LoginForm = ({ disabled = false }: Props) => {
   const onFinish = async (values: any) => {
     try {
       console.log(values);
-         navigate(ROUTE_PATH.MY_PROFILE);
+      navigate(ROUTE_PATH.MY_PROFILE);
     } catch (error) {
       const errorCode: HttpErrorCode = (error as APIErrorResponse).data?.code;
       const errorMessage = HttpErrorMessage[errorCode];
