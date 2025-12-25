@@ -1,0 +1,8 @@
+export const LOCAL_STORAGE_KEY = {
+  ACCESS_TOKEN: 'accessToken',
+};
+
+export const ROUTE_PATH = {
+  LOGIN: '/login',
+  MY_PROFILE: '/my-profile',
+};
