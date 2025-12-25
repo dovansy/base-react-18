@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { ROUTE_PATH } from '@/constants/app';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -26,13 +27,7 @@ function getItem(
 const MenuAdmin = () => {
   const items: MenuProps['items'] = [
     getItem('Admin Management', '1', '', [
-      getItem('My Account', '1.1', undefined, undefined, undefined, '/my-account'),
-      getItem('Admins', '1.2', undefined, undefined, undefined, '/admins-management'),
-    ]),
-
-    getItem('User Management', '2', '', [
-      getItem('Users', '2.1', undefined, undefined, undefined, '/users'),
-      getItem('User settings', '2.2', undefined, undefined, undefined, '/user-settings'),
+      getItem('My Account', '1.1', undefined, undefined, undefined, ROUTE_PATH.MY_PROFILE),
     ]),
 
     getItem('Logout', '3', '', undefined, undefined),
@@ -47,11 +42,7 @@ const MenuAdmin = () => {
   useEffect(() => {
     const pathnameLevel1 = location.pathname.split('/')[1];
     const keyMap: { [key: string]: { key: string; parent?: string } } = {
-      'my-account': { key: '1.1', parent: '1' },
-      'admins-management': { key: '1.2', parent: '1' },
-
-      users: { key: '2.1', parent: '2' },
-      'user-settings': { key: '2.2', parent: '2' },
+      'my-profile': { key: '1.1', parent: '1' },
 
       logout: { key: '3' },
     };

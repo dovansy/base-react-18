@@ -8,21 +8,21 @@ import { AppFormItem } from '@/components/molecules/form-item';
 import { useAppNotification } from '@/components/templates/notification';
 import { ROUTE_PATH } from '@/constants/app';
 import { HttpErrorCode, HttpErrorMessage } from '@/constants/http';
-import { APIErrorResponse, FormLoginModel } from '@/store/user/type';
 import { useNavigate } from 'react-router-dom';
 import SuffixPass from './SuffixPass';
+import { APIErrorResponse } from '@/types/api.type';
 
 interface Props {
   disabled?: boolean;
 }
 
 const LoginForm = ({ disabled = false }: Props) => {
-  const [form] = Form.useForm<FormLoginModel>();
+  const [form] = Form.useForm();
   const [passwordVisible, setPasswordVisible] = useState(true);
   const { error: notifyError } = useAppNotification();
   const navigate = useNavigate();
   const setError = useCallback(
-    (name: keyof FormLoginModel, errors: string[] | string) => {
+    (name: any, errors: string[] | string) => {
       const errorMessages = Array.isArray(errors) ? errors : [errors];
       form.setFields([
         {
@@ -34,7 +34,7 @@ const LoginForm = ({ disabled = false }: Props) => {
     [form]
   );
 
-  const onFinish = async (values: FormLoginModel) => {
+  const onFinish = async (values: any) => {
     try {
       console.log(values);
       navigate(ROUTE_PATH.MY_PROFILE);

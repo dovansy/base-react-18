@@ -3,6 +3,7 @@ export const LOCAL_STORAGE_KEY = {
 };
 
 export const ROUTE_PATH = {
+  HOME: '/',
   LOGIN: '/login',
   MY_PROFILE: '/my-profile',
 };

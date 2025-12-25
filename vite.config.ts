@@ -33,4 +33,14 @@ export default defineConfig({
       '@public': path.resolve(__dirname, 'public'),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ['react', 'react-dom'],
+          antd: ['antd'],
+        },
+      },
+    },
+  },
 });
