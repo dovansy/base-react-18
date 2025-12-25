@@ -8,9 +8,9 @@ import { AppFormItem } from '@/components/molecules/form-item';
 import { useAppNotification } from '@/components/templates/notification';
 import { ROUTE_PATH } from '@/constants/app';
 import { HttpErrorCode, HttpErrorMessage } from '@/constants/http';
+import { APIErrorResponse } from '@/types/api.type';
 import { useNavigate } from 'react-router-dom';
 import SuffixPass from './SuffixPass';
-import { APIErrorResponse } from '@/types/api.type';
 
 interface Props {
   disabled?: boolean;
