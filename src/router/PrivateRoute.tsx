@@ -1,5 +1,4 @@
-import { Navigate, Outlet } from 'react-router-dom';
-import { ROUTE_PATH } from '@/constants/app';
+import { Outlet } from 'react-router-dom';
 
 export default function PrivateRoute() {
   // const isAuthenticated = Boolean(localStorage.getItem('access_token'));
