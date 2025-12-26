@@ -7,9 +7,9 @@
     "dev": "vite --host 0.0.0.0",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint . --ext ts,tsx,js,jsx --max-warnings 0",
-    "lint:fix": "eslint . --ext ts,tsx,js,jsx --fix",
-    "prepare": "husky install",
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx --max-warnings=0",
+    "lint:fix": "eslint . --ext .ts,.tsx,.js,.jsx --fix",
+    "prepare": "husky",
     "clean": "rm -rf dist node_modules package-lock.json yarn.lock"
   },
   "dependencies": {
@@ -31,6 +31,8 @@
     "vite-plugin-svgr": "^4.2.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
     "@types/node": "^20.8.10",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
@@ -55,8 +57,7 @@
   "lint-staged": {
     "*.{js,ts,jsx,tsx}": [
       "eslint --max-warnings=0 --fix",
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   }
 }

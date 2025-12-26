@@ -16,7 +16,7 @@ export const getDefaultPaginationOptions: (className?: string) => TablePaginatio
   className?: string
 ) => {
   return {
-    // className: getPaginationClass(className),
+    className: getPaginationClass(className),
     // nextIcon: NextIcon,
     // prevIcon: PrevIcon,
     hideOnSinglePage: true,

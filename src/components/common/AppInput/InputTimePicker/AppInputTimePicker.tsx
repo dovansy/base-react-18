@@ -7,7 +7,7 @@ import styles from '../AppInput.module.scss';
 import './styles.scss';
 
 export const AppInputTimePicker = forwardRef<InputRef, TimePickerProps>(
-  ({ className, disabled, ...props }: TimePickerProps, ref) => {
+  ({ className, disabled, ...props }: TimePickerProps, _ref) => {
     const classNames = clsx(className, styles.appInput, {
       [styles.errorInput]: props.status === 'error',
     });

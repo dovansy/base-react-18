@@ -15,13 +15,12 @@ export const AppTreeSelect = forwardRef<HTMLSelectElement, AppTreeSelectProps>(
     {
       placeholder = 'Select',
       size = 'middle',
-      status = '',
       maxTagCount = 2,
       className,
       treeData = [],
       ...props
     }: AppTreeSelectProps,
-    ref
+    _ref
   ) => {
     const [selectedValues, setSelectedValues] = useState([]);
     const [options, setOptions] = useState<any>([]);

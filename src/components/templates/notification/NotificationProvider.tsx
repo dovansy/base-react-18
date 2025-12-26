@@ -1,5 +1,3 @@
-'use client';
-
 import { createContext, useCallback } from 'react';
 
 import { notification } from 'antd';
@@ -8,11 +6,12 @@ import clsx from 'clsx';
 import styles from './Notification.module.scss';
 import { Notification, NotificationParams } from './types';
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const NotificationContext = createContext<Notification>({
-  error: (params: NotificationParams) => {},
-  info: (params: NotificationParams) => {},
-  success: (params: NotificationParams) => {},
-  warning: (params: NotificationParams) => {},
+  error: (_params: NotificationParams) => {},
+  info: (_params: NotificationParams) => {},
+  success: (_params: NotificationParams) => {},
+  warning: (_params: NotificationParams) => {},
 });
 
 interface NotificationProviderProps {

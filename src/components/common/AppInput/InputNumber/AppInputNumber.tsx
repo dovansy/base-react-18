@@ -12,7 +12,6 @@ interface AppInputNumberProps extends Omit<NumericFormatProps<InputProps>, 'onCh
 export const AppInputNumber = ({
   onChange,
   onValueChange,
-  fixedDecimal,
   decimalScale = 2,
   hideThousandSeparator,
   ...props
